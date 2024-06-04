@@ -5,9 +5,11 @@ import PopupContentSeen from './PopupContentSeen';
 import PopupContentFound from './PopupContentFound';
 import PopupContentLost from './PopupContentLost';
 import { check } from '../../utils/filters';
+import { getMarkerIcon } from '../../data/iconSeen';
 
 function PopupComponent(data, filter, dbName) {
     let popupContent;
+    let markerIcon = getMarkerIcon(dbName);
     if (dbName == "pets_seen") { popupContent = PopupContentSeen; }
     if (dbName == "pets_found") { popupContent = PopupContentFound; }
     if (dbName == "pets_lost") { popupContent = PopupContentLost; }
@@ -22,7 +24,9 @@ function PopupComponent(data, filter, dbName) {
                 if(check(filter.filters, el)) { 
                 return (
                     <div key={i}>
-                        <Marker position={parsePosition(el.position)}>
+                        <Marker 
+                            position={parsePosition(el.position)}
+                            icon={markerIcon}>
                             <Popup>
                                 {popupContent(el)}
                             </Popup>

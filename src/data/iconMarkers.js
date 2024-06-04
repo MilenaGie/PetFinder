@@ -18,7 +18,7 @@ function getMarkerIcon(iconType) {
         shadowAnchor: null,
         popupAnchor:  [-0, -0],
         iconSize: new L.Point(50, 50),
-        className: 'icon-seen'
+        className: 'icon'
     });
     return icon;
 }

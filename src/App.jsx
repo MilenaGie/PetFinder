@@ -20,12 +20,16 @@ const mainTheme = createTheme({
           main: '#CBD1C2',    // light green
           text: '#ffffff',
       },
+      tertiary: {
+        main: '#E6DFD5',    // beige
+        text: '#525252'     // gray
+      }
   },
 })
 
 
 function App() {
-  const [filter, setFilter] = useState(defaultFilter);
+  const [filter, setFilter] = useState( { ...defaultFilter });
   const [, updateState] = useState();
   const forceUpdate = useCallback(() => updateState({}), []);
 
@@ -33,7 +37,7 @@ function App() {
     <ThemeProvider theme={mainTheme}>
       <TopBar />
       <Box sx={{ display: 'flex' }} >
-        <FilterMenu changeFilter={setFilter} updateComponent={forceUpdate}/>
+        <FilterMenu currentFilter={filter} changeFilter={setFilter} updateComponent={forceUpdate}/>
         <Box width="100vw" sx={{ display: 'flex' }}>
           <Map currentFilter={filter} />
           <Buttons currentFilter={filter} changeFilter={setFilter}/>

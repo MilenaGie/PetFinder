@@ -1,18 +1,18 @@
 const defaultFilter = {
     types: "all",
     filters: {
-      pet_type: null,
-      pet_breed: null,
-      color: null,
+      pet_type: 999,
+      pet_breed: 999,
+      color: 999,
       date_action: {
-        from: null,
-        to: null,
+        from: 999,
+        to: 999,
       },
       date_added: {
-        from: null,
-        to: null,
+        from: 999,
+        to: 999,
       }
     },
-    
 }
+
 export default defaultFilter;

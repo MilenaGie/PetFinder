@@ -1,52 +1,94 @@
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
 import {insertData} from "../../db/DataParser";
 import { useState } from "react";
+import Typography from "@mui/material/Typography";
 import dotSeen from "../../assets/dot-seen.svg"
-import defaultFilter from "../../data/defaultFilter";
 import SelectBox from "../../utils/SelectBox";
 
-// import Date from Date;
+
+const labelStyle = {
+  mr: 1,
+  display: { xs: 'none', md: 'flex' },
+  fontWeight: 600,
+  color: "tertiary.text",
+  textDecoration: 'none',
+  mt: 2,
+};
 
 function FormSeen() {
   const [position, setPosition] = useState('52.2 21.3');
-  const [pType, setPType] = useState(1);
-  const [pBreed, setPBreed] = useState(1);
-  const [pColor, setPColor] = useState(1);
+  let stateBasic = JSON.stringify({id: 99, value: "inne"});
+  const [pType, setPType] = useState(stateBasic);
+  const [pBreed, setPBreed] = useState(stateBasic);
+  const [pColor, setPColor] = useState(stateBasic);
   const [additInfo, setAdditInfo] = useState("");
   const [dateAction, setDateAction] = useState("05 October 2011 14:48 UTC");
 
   const handleChange = (event) => {
     insertDataToDB(position, pType, pBreed, pColor, additInfo, dateAction);
   }
+
   return (
       <>
-        <div direction="row" spacing={4} p={1} sx={{position: 'fixed' }}>
+        <Typography
+           variant="h5"
+           sx={{
+             mr: 1,
+             display: { xs: 'none', md: 'flex' },
+             fontWeight: 700,
+             letterSpacing: '.1rem',
+             color: "primary.text",
+             textDecoration: 'none',
+           }}
+        >
+          Zgłoś zauważone zwierzę
+        </Typography>
+        <div direction="row" spacing={2} p={1} sx={{position: 'fixed' }}>
+          <Typography sx={labelStyle}>
+            Wprowadź lokalizację
+          </Typography>
           <TextField
             id="outlined-controlled"
-            label="Pozycja"
             value={position}
             onChange={(event) => {
               setPosition(event.target.value);
             }}
+            sx = {{bgcolor: "tertiary.main",  width: '20ch'}}
           />
-          {SelectBox("Typ zwierzęcia", pType, setPType, "pet_type")}
-          {SelectBox("Rasa zwierzęcia", pBreed, setPBreed, "pet_breed")}
-          {SelectBox("Kolor zwierzęcia", pColor, setPColor, "color")}
+          <Typography sx={labelStyle}>
+            Wybierz gatunek
+          </Typography>
+          {SelectBox(pType, setPType, "pet_type", "tertiary.main")}
+          <Typography sx={labelStyle}>
+            Wybierz rasę
+          </Typography>
+          {SelectBox(pBreed, setPBreed, "pet_breed", "tertiary.main")}
+          <Typography sx={labelStyle}>
+            Wybierz kolor
+          </Typography>
+          {SelectBox(pColor, setPColor, "color", "tertiary.main")}
+          <Typography sx={labelStyle}>
+              Wpisz dodatkowe informacje
+          </Typography>
           <TextField
             id="outlined-controlled"
             label="Dodatkowe Informacje"
             value={additInfo}
+            fullWidth={true}
+            multiline={true}
+            minRows={3}
             onChange={(event) => {
               setAdditInfo(event.target.value);
             }}
+            sx = {{bgcolor: "tertiary.main"}}
           />
         </div>
         <br />
         <Button 
           variant="contained" 
           onClick={handleChange}
+          sx = {{bgcolor: "secondary.main", fontWeight: 'bold', color: "tertiary.text"}}
         >
           Potwierdź
         </Button>

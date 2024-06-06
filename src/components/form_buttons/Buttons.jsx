@@ -8,12 +8,12 @@ import FormFound from './FormFound';
 import FormLost from './FormLost';
 import { useState } from 'react';
 
-const style = {
-    position: 'absolute',
+const modalStyle = {
+    position: 'fixed',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 500,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -28,7 +28,7 @@ function ButtonTemplate(props) {
 
     return (
         <>
-            <Button variant="contained" onClick={handleOpen}>
+            <Button size="large" variant="contained" onClick={handleOpen}>
                 {text}
             </Button>
             <Modal
@@ -37,12 +37,9 @@ function ButtonTemplate(props) {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 >
-                <Box sx={style}>
+                <Box sx={modalStyle}>
                     {children}
                 </Box>
-                {/* <Box sx={style}> */}
-                    {/* <Content /> */}
-                {/* </Box> */}
             </Modal>
         </>
     );
@@ -50,7 +47,8 @@ function ButtonTemplate(props) {
 
 function Buttons({currentFilter, changeFilter}) {
     return (
-        <Stack direction="row" spacing={2} p={1} sx={{position: 'fixed' }}>
+        <Stack direction="row" spacing={2} p={1} justifyContent="center"
+        alignItems="baseline" sx={{position: 'relative', width: '85%'}}>
             <ButtonTemplate text="WIDZIANE">
                 <FormSeen />    
             </ButtonTemplate>

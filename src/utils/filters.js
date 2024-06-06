@@ -7,7 +7,8 @@ function checkTimestamp(filter, checking) {
 }
 
 function checkBasic(filter, attribute) {
-    if (filter == null || filter.includes(attribute)) {
+    // console.log(filter,attribute)
+    if (filter == 999 || filter == "wszystkie" || filter == attribute) {
         // console.log("true")
         return true;
     } else {
@@ -25,7 +26,6 @@ function check(filter, el) {
         // checkTimestamp(filter[date_action], el.date_action),
         // checkTimestamp(filter[date_added], el.date_added)
     ];
-    // console.log(checks);
     if (checks.includes(false)) {
         return false;
     } else {

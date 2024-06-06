@@ -14,9 +14,12 @@ let dataCollection = {
     "color": dataPetColor,
 }
 
-function SelectBox(selectName, selectValue, changeValue, data_type) {
+function SelectBox(selectValue, changeValue, data_type, bgcolor, includeAll) {
     GetData(data_type, (results) => {
         dataCollection[data_type] = results;
+        if (includeAll && dataCollection[data_type][999] == undefined) {
+            dataCollection[data_type][999] = {id: 999, value: "wszystkie"}
+        }
     });
     return (
         <div>
@@ -24,22 +27,25 @@ function SelectBox(selectName, selectValue, changeValue, data_type) {
                 id="outlined-select"
                 select
                 required
-                label={selectName}
                 variant="outlined"
                 onChange={(event) => {
                     changeValue(event.target.value);
                 }}
-                helperText="Please select a value"
                 InputLabelProps={{
-                shrink: true
+                    shrink: true
                 }}
                 value={selectValue || ""}
                 defaultValue={""}
+                sx = {{'& > :not(style)': { m: 0, width: '20ch' },  bgcolor: bgcolor}}
+                
             >
                 {dataCollection[data_type]?.map((d, i) => (
                 <MenuItem
                     key={d.id}
-                    value={d.id}
+                    value={JSON.stringify({
+                        id: d.id,
+                        value: d.value,
+                      })}
                 >
                     {d.value}
                 </MenuItem>

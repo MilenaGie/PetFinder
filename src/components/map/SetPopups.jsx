@@ -28,7 +28,7 @@ function PopupComponent(data, filter, dbName) {
                         <Marker 
                             position={parsePosition(el.position)}
                             icon={markerIcon}>
-                            <Popup>
+                            <Popup minWidth="300" minHeighr="150">
                                 {popupContent(el)}
                             </Popup>
                         </Marker>
@@ -60,6 +60,7 @@ function SetPopup({currentFilter}) {
         PopupComponent, 
         baseSelection, 
         currentFilter);
+    
     return (
         <>
             {petsSeen}

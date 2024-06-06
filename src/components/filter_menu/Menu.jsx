@@ -24,7 +24,7 @@ function TabPanel(props) {
     );
 }
 
-function FilterMenu({changeFilter, updateComponent}) {
+function FilterMenu({currentFilter, changeFilter, updateComponent}) {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
@@ -50,18 +50,21 @@ function FilterMenu({changeFilter, updateComponent}) {
                 </Tabs>
                 <TabPanel value={value} index={0}>
                     <FilterMenuSeen 
+                        currentFilter={currentFilter}
                         changeFilter={changeFilter}
                         updateComponent={updateComponent} 
                     />
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                     <FilterMenuFound 
+                        currentFilter={currentFilter}
                         changeFilter={changeFilter}
                         updateComponent={updateComponent} 
                     />
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                     <FilterMenuLost 
+                        currentFilter={currentFilter}
                         changeFilter={changeFilter}
                         updateComponent={updateComponent} 
                     />
@@ -71,13 +74,12 @@ function FilterMenu({changeFilter, updateComponent}) {
             <Button
                 variant="contained" 
                 onClick= {(event) => {
-                    changeFilter(defaultFilter);
+                    changeFilter( {...defaultFilter});
                     updateComponent();
                 }}
             >
                 Wyświetl wszystkie zgłoszenia
             </Button>
-            {/* </Box> */}
         </Box>
     );
 }

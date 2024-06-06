@@ -2,9 +2,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import PhoneIcon from '@mui/icons-material/Phone';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import PersonPinIcon from '@mui/icons-material/PersonPin';
+import Button from '@mui/material/Button';
+import defaultFilter from '../../data/defaultFilter';
 
 import FilterMenuSeen from './FilterMenuSeen';
 import FilterMenuFound from './FilterMenuFound';
@@ -24,7 +24,7 @@ function TabPanel(props) {
     );
 }
 
-function FilterMenu({currentFilter, changeFilter}) {
+function FilterMenu({changeFilter, updateComponent}) {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
@@ -33,28 +33,51 @@ function FilterMenu({currentFilter, changeFilter}) {
     const tabWidth = { width: "33%" };
     return (
         <Box 
-            height="89vh"    ////
+            height="92vh" 
             width="20vw"
-            alignItems="left"
-            textAlign="left"
-            gap={4}
-            p={2}
-            sx={{ bgcolor: "secondary.main", boxShadow: '3'}}
+            sx={{ bgcolor: "secondary.main", boxShadow: '3', justifyContent: "space-between"}}
         >
-            <Tabs value={value} onChange={handleChange}>
-                <Tab icon={<FavoriteIcon />} label="WIDZIANE" style={tabWidth}/>
-                <Tab icon={<FavoriteIcon />} label="ZNALEZIONE" style={tabWidth}/>
-                <Tab icon={<FavoriteIcon />} label="ZAGINIONE" style={tabWidth}/>
-            </Tabs>
-            <TabPanel value={value} index={0}>
-                <FilterMenuSeen currentFilter={currentFilter} changeFilter={changeFilter} />
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                <FilterMenuFound currentFilter={currentFilter} changeFilter={changeFilter} />
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-                <FilterMenuLost currentFilter={currentFilter} changeFilter={changeFilter} />
-            </TabPanel>
+            <Box      
+                alignItems="left"
+                textAlign="left"
+                gap={4}
+                p={2} 
+            >
+                <Tabs value={value} onChange={handleChange}>
+                    <Tab icon={<FavoriteIcon />} label="WIDZIANE" style={tabWidth}/>
+                    <Tab icon={<FavoriteIcon />} label="ZNALEZIONE" style={tabWidth}/>
+                    <Tab icon={<FavoriteIcon />} label="ZAGINIONE" style={tabWidth}/>
+                </Tabs>
+                <TabPanel value={value} index={0}>
+                    <FilterMenuSeen 
+                        changeFilter={changeFilter}
+                        updateComponent={updateComponent} 
+                    />
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                    <FilterMenuFound 
+                        changeFilter={changeFilter}
+                        updateComponent={updateComponent} 
+                    />
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                    <FilterMenuLost 
+                        changeFilter={changeFilter}
+                        updateComponent={updateComponent} 
+                    />
+                </TabPanel>
+            </Box>
+            <Box sx={{ margin: 10 }} />
+            <Button
+                variant="contained" 
+                onClick= {(event) => {
+                    changeFilter(defaultFilter);
+                    updateComponent();
+                }}
+            >
+                Wyświetl wszystkie zgłoszenia
+            </Button>
+            {/* </Box> */}
         </Box>
     );
 }

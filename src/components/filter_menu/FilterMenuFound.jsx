@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 
-function FilterMenuFound({currentFilter, changeFilter}) {
+function FilterMenuFound({changeFilter, updateComponent}) {
     return(
         <Box width="20" height="20">
             <p>asdasd2</p>

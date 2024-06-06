@@ -1,9 +1,9 @@
 function PopupContentFound({pet_type, color, pet_breed}) {
     return (
         <p>
-            Rodzaj: {pet_type.pet_type}<br/>
-            Rasa: {pet_breed.breed_type}<br/>
-            Umaszczenie: {color.color}<br/>
+            Rodzaj: {pet_type.value}<br/>
+            Rasa: {pet_breed.value}<br/>
+            Umaszczenie: {color.value}<br/>
             
         </p>
     );

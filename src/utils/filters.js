@@ -19,9 +19,9 @@ function checkBasic(filter, attribute) {
 function check(filter, el) {
     const {pet_type, pet_breed, color} = el;
     let checks = [
-        checkBasic(filter.pet_type, pet_type.pet_type),
-        checkBasic(filter.pet_breed, pet_breed.pet_breed),
-        checkBasic(filter.color, color.color)
+        checkBasic(filter.pet_type, pet_type.value),
+        checkBasic(filter.pet_breed, pet_breed.value),
+        checkBasic(filter.color, color.value)
         // checkTimestamp(filter[date_action], el.date_action),
         // checkTimestamp(filter[date_added], el.date_added)
     ];

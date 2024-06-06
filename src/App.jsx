@@ -5,7 +5,7 @@ import Map from "./components/map/Map";
 import { ThemeProvider, createTheme } from '@mui/material';
 import Box from "@mui/material/Box";
 import Buttons from "./components/form_buttons/Buttons";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import defaultFilter from "./data/defaultFilter"
 
 import "./App.css";
@@ -25,15 +25,17 @@ const mainTheme = createTheme({
 
 
 function App() {
-  
   const [filter, setFilter] = useState(defaultFilter);
+  const [, updateState] = useState();
+  const forceUpdate = useCallback(() => updateState({}), []);
+
   return (
     <ThemeProvider theme={mainTheme}>
       <TopBar />
       <Box sx={{ display: 'flex' }} >
-        <FilterMenu currentFilter={filter} changeFilter={setFilter}/>
+        <FilterMenu changeFilter={setFilter} updateComponent={forceUpdate}/>
         <Box width="100vw" sx={{ display: 'flex' }}>
-          <Map currentFilter={filter}/>
+          <Map currentFilter={filter} />
           <Buttons currentFilter={filter} changeFilter={setFilter}/>
         </Box>
       </Box>
@@ -42,5 +44,3 @@ function App() {
 }
 
 export default App;
-
-{/* <button onClick={() => testData()}>CLICK!</button> */}

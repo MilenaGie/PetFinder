@@ -1,4 +1,4 @@
-import GetData from "./DataParser";
+import { GetData } from "./DataParser";
 
 function GetConstData(data_type, component) {
     if(data_type != "pet_type" || data_type == "pet_breed" || data_type == "color") {

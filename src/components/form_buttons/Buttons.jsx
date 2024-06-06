@@ -52,13 +52,13 @@ function Buttons({currentFilter, changeFilter}) {
     return (
         <Stack direction="row" spacing={2} p={1} sx={{position: 'fixed' }}>
             <ButtonTemplate text="WIDZIANE">
-                <FormSeen filter={currentFilter} changeFilter={changeFilter} />    
+                <FormSeen />    
             </ButtonTemplate>
             <ButtonTemplate text="ZNALEZIONE">
-                <FormFound filter={currentFilter} changeFilter={changeFilter} /> 
+                <FormFound /> 
                 </ButtonTemplate>
             <ButtonTemplate text="ZAGINIONE">
-                <FormLost filter={currentFilter} changeFilter={changeFilter} />  
+                <FormLost />  
             </ButtonTemplate>
         </Stack>
     );

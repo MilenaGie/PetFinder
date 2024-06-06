@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap  } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import SetPopup from './SetPopups';
@@ -7,7 +7,6 @@ const defaultPos = [52.2, 21.13];
 const defaultZoom = 12;
 
 function Map({currentFilter}) {
-
     return (
         <MapContainer 
             center={defaultPos} 

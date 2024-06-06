@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import defaultFilter from '../../data/defaultFilter';
 
 function FilterMenuFound({currentFilter, changeFilter, updateComponent}) {
-    // let newFilter = { ...defaultFilter };
+    let newFilter = { ...defaultFilter };
 
     return(
         <Box width="20" height="20">

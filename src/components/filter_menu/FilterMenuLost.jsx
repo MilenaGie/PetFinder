@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-// import defaultFilter from '../../data/defaultFilter';
+import defaultFilter from '../../data/defaultFilter';
 
 function FilterMenuLost({currentFilter, changeFilter, updateComponent}) {
     let newFilter = { ...defaultFilter };

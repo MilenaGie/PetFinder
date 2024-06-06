@@ -3,7 +3,6 @@ import { useState } from "react";
 import Button from '@mui/material/Button';
 import Typography from "@mui/material/Typography";
 import SelectBox from "../../utils/SelectBox";
-// import defaultFilter from '../../data/defaultFilter';
 
 const labelStyle = {
     mr: 1,
@@ -24,15 +23,15 @@ function FilterMenuSeen({currentFilter, changeFilter, updateComponent}) {
     return(
         <Box width="20" height="20">
             <Typography sx={labelStyle}>    
-                Wybierz gatunek zwierzęcia
+                Wybierz gatunek
             </Typography>
             {SelectBox(pType, setPType, "pet_type", "primary.main", true)}
             <Typography sx={labelStyle}>
-                Wybierz rasę zwierzęcia
+                Wybierz rasę
             </Typography>
             {SelectBox(pBreed, setPBreed, "pet_breed", "primary.main", true)}
             <Typography sx={labelStyle}>
-                Wybierz kolor zwierzęcia
+                Wybierz kolor
             </Typography>
             {SelectBox(pColor, setPColor, "color", "primary.main", true)}
             <br />

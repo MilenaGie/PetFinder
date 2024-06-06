@@ -4,7 +4,8 @@ function PopupContentFound({pet_type, color, pet_breed, contact_info, additional
             <b>Rodzaj:</b> {pet_type.value}<br/>
             <b>Rasa:</b> {pet_breed.value}<br/>
             <b>Umaszczenie:</b> {color.value}<br/>
-            <b>Kontakt:</b> {contact_info} <br/>
+            <b>Kontakt:</b> <br/>
+            {contact_info} <br/>
             <b>Dodatkowe informacje:</b> <br/>
             {additional_info}
         </p>

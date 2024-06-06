@@ -48,7 +48,7 @@ function ButtonTemplate(props) {
 function Buttons({currentFilter, changeFilter}) {
     return (
         <Stack direction="row" spacing={2} p={1} justifyContent="center"
-        alignItems="baseline" sx={{position: 'relative', width: '85%'}}>
+        alignItems="baseline" sx={{position: 'fixed', width: '80%'}}>
             <ButtonTemplate text="WIDZIANE">
                 <FormSeen />    
             </ButtonTemplate>

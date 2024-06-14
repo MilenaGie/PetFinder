@@ -4,7 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Button from '@mui/material/Button';
-import defaultFilter from '../../data/defaultFilter';
+import getDefaultFilter from '../../data/defaultFilter';
 
 import FilterMenuSeen from './FilterMenuSeen';
 import FilterMenuFound from './FilterMenuFound';
@@ -74,7 +74,7 @@ function FilterMenu({currentFilter, changeFilter, updateComponent}) {
             <Button
                 variant="contained" 
                 onClick= {(event) => {
-                    changeFilter( {...defaultFilter});
+                    changeFilter({...getDefaultFilter()});
                     updateComponent();
                 }}
             >

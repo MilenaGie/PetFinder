@@ -6,7 +6,7 @@ import { ThemeProvider, createTheme } from '@mui/material';
 import Box from "@mui/material/Box";
 import Buttons from "./components/form_buttons/Buttons";
 import { useState, useCallback } from "react";
-import defaultFilter from "./data/defaultFilter"
+import getDefaultFilter from "./data/defaultFilter"
 
 import "./App.css";
 
@@ -29,7 +29,7 @@ const mainTheme = createTheme({
 
 
 function App() {
-  const [filter, setFilter] = useState( { ...defaultFilter });
+  const [filter, setFilter] = useState( {...getDefaultFilter()});
   const [, updateState] = useState();
   const forceUpdate = useCallback(() => updateState({}), []);
 

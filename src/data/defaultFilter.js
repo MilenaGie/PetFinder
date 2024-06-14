@@ -1,4 +1,5 @@
-const defaultFilter = {
+function getDefaultFilter() {
+  const defaultFilter = {
     types: "all",
     filters: {
       pet_type: 999,
@@ -13,6 +14,8 @@ const defaultFilter = {
         to: 999,
       }
     },
+  };
+  return defaultFilter;
 }
 
-export default defaultFilter;
+export default getDefaultFilter;

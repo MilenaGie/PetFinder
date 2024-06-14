@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import defaultFilter from '../../data/defaultFilter';
+import getDefaultFilter from '../../data/defaultFilter';
 
 function FilterMenuFound({currentFilter, changeFilter, updateComponent}) {
-    let newFilter = { ...defaultFilter };
+    let newFilter = {...getDefaultFilter()};
 
     return(
         <Box width="20" height="20">

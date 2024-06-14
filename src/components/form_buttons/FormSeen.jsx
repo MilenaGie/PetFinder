@@ -16,7 +16,7 @@ const labelStyle = {
   mt: 2,
 };
 
-function FormSeen() {
+function FormSeen(onDone) {
   const [position, setPosition] = useState('52.2 21.3');
   let stateBasic = JSON.stringify({id: 99, value: "inne"});
   const [pType, setPType] = useState(stateBasic);
@@ -26,7 +26,8 @@ function FormSeen() {
   const [dateAction, setDateAction] = useState("05 October 2011 14:48 UTC");
 
   const handleChange = (event) => {
-    insertDataToDB(position, pType, pBreed, pColor, additInfo, dateAction);
+    insertDataToDB(position, pType, pBreed, pColor, additInfo);//, dateAction);
+    onDone();
   }
 
   return (
@@ -99,7 +100,12 @@ function FormSeen() {
 function insertDataToDB(position, pet_type, pet_breed, pet_color, additional_info, date_action) {
   insertData(
     "pets_seen", 
-    {position: position, pet_type: pet_type, pet_breed: pet_breed, color: pet_color, additional_info:additional_info, date_action:new Date(date_action).toISOString()}
+    {position: position, 
+      pet_type: JSON.parse(pet_type).id, 
+      pet_breed: JSON.parse(pet_breed).id,
+      color: JSON.parse(pet_color).id,
+      additional_info: additional_info,
+    }
   );
 }
 

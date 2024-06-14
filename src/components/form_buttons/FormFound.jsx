@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 
-function FormFound() {
+function FormFound(onDone) {
     return (
         <Button variant="contained">ZNALEZIONE</Button>
     )

@@ -8,6 +8,7 @@ import FormFound from './FormFound';
 import FormLost from './FormLost';
 import { useState } from 'react';
 
+
 const modalStyle = {
     position: 'fixed',
     top: '50%',
@@ -21,7 +22,7 @@ const modalStyle = {
   };
 
 function ButtonTemplate(props) {
-    const {text, children} = props;
+    const {text, modalContent} = props;
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -38,7 +39,9 @@ function ButtonTemplate(props) {
                 aria-describedby="modal-modal-description"
                 >
                 <Box sx={modalStyle}>
-                    {children}
+                    {modalContent(() => {
+                        handleClose();
+                    })}
                 </Box>
             </Modal>
         </>
@@ -49,15 +52,9 @@ function Buttons({currentFilter, changeFilter}) {
     return (
         <Stack direction="row" spacing={2} p={1} justifyContent="center"
         alignItems="baseline" sx={{position: 'fixed', width: '80%'}}>
-            <ButtonTemplate text="WIDZIANE">
-                <FormSeen />    
-            </ButtonTemplate>
-            <ButtonTemplate text="ZNALEZIONE">
-                <FormFound /> 
-                </ButtonTemplate>
-            <ButtonTemplate text="ZAGINIONE">
-                <FormLost />  
-            </ButtonTemplate>
+            <ButtonTemplate text="WIDZIANE" modalContent={FormSeen} />
+            <ButtonTemplate text="ZNALEZIONE" modalContent={FormFound} />
+            <ButtonTemplate text="ZAGINIONE" modalContent={FormLost} />
         </Stack>
     );
 }
